@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+require 'faker'
+
+User.destroy_all
+
+user = User.create(name: Faker::Name.name, email: 'bob@gmail.com', number: '01543857221')
+
+10.times do
+  Flat.create(address: Faker::Address.full_address, price: 75, rating: 6, capacity: 4, user: user)
+end
