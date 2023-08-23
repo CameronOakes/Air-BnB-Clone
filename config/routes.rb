@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root to: "pages#home"
-
+  root "flats#home"
+  resources :flats
 end
