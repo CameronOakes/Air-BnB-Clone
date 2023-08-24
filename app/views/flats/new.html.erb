@@ -1,4 +1,13 @@
 <%= form_for @flat do |f| %>
-  <!-- Your form fields here -->
+  <!-- form fields here, e.g.: -->
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+
+  <%= f.label :price %>
+  <%= f.number_field :price %>
+
+  <%= f.label :capacity %>
+  <%= f.number_field :capacity %>
+
   <%= f.submit "Create Flat" %>
 <% end %>

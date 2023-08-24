@@ -1,1 +1,12 @@
 <h1><%= @flat.address %></h1> =
+
+<%= form_with(model: Booking.new, url: bookings_path) do |form| %>
+  <%= form.hidden_field :flat_id, value: @flat.id %>
+  <%= form.label :start_date %>
+  <%= form.date_field :start_date %>
+  <%= form.label :end_date %>
+  <%= form.date_field :end_date %>
+  <%= form.submit "Book Now" %>
+<% end %>
+
+<%= link_to 'Book this flat', new_flat_booking_path(@flat) %>
