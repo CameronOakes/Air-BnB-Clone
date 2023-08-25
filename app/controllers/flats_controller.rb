@@ -1,4 +1,6 @@
 class FlatsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show, :home]
+
   def home
     @flats = Flat.all
     render 'home'
@@ -13,12 +15,16 @@ class FlatsController < ApplicationController
   end
 
   def create
-    @flat = Flat.new(flat_params)
+    @flat = current_user.flats.build(flat_params)
     if @flat.save
-      redirect_to @flat
+      redirect_to flats_path, notice: 'Flat was successfully created.'
     else
       render :new
     end
+  end
+
+  def index
+    @flats = Flat.all
   end
 
   private

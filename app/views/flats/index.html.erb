@@ -1,0 +1,24 @@
+<h1>All Flats</h1>
+
+<%= link_to 'New Flat', new_flat_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>Price</th>
+      <th>Capacity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @flats.each do |flat| %>
+      <tr>
+        <td><%= flat.address %></td>
+        <td><%= flat.price %></td>
+        <td><%= flat.capacity %></td>
+        <td><%= link_to 'View', flat_path(flat) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

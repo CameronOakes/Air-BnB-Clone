@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  # before_action :authenticate_user!
+  before_action :authenticate_user!
   before_action :set_flat, only: [:new, :create]
 
   def new
@@ -21,7 +21,6 @@ class BookingsController < ApplicationController
     @bookings = Booking.where(user: current_user)
   end
 
-
   private
 
   def set_flat
@@ -30,10 +29,5 @@ class BookingsController < ApplicationController
 
   def booking_params
     params.require(:booking).permit(:start_date, :end_date)
-  end
-
-
-  def current_user
-    User.first
   end
 end

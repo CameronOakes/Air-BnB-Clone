@@ -1,12 +1,9 @@
 <h1>New Booking</h1>
 
-<%= form_with(model: [@flat, @booking], method: :post) do |form| %>
-
-  <%= form.label :start_date %>
-  <%= form.date_field :start_date %>
-
-  <%= form.label :end_date %>
-  <%= form.date_field :end_date %>
-
-  <%= form.submit "Create Booking" %>
+<%= simple_form_for [@flat, @booking], url: flat_bookings_path(@flat) do |f| %>
+  <%= f.input :start_date, as: :date, label: 'Start Date' %>
+  <%= f.input :end_date, as: :date, label: 'End Date' %>
+  <%= f.button :submit, "Create Booking" %>
 <% end %>
+
+<%= flat_bookings_path(@flat) %>

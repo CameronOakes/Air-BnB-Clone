@@ -3,7 +3,7 @@
 <% if @bookings && @bookings.any? %>
   <% @bookings.each do |booking| %>
     <div>
-      <h2><%= booking.flat.title %></h2>
+      <h2><%= booking.flat.address %></h2>
       <p>From: <%= booking.start_date %></p>
       <p>To: <%= booking.end_date %></p>
     </div>
