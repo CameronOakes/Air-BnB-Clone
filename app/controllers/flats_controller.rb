@@ -24,8 +24,29 @@ class FlatsController < ApplicationController
   end
 
   def index
-    @flats = Flat.all
+    @flats = Flat.order(:id)
   end
+
+
+  def edit
+    @flat = Flat.find(params[:id])
+  end
+
+  def update
+    @flat = Flat.find(params[:id])
+    if @flat.update(flat_params)
+      redirect_to flats_path, notice: 'Flat was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @flat = Flat.find(params[:id])
+    @flat.destroy
+    redirect_to flats_path, notice: 'Flat was successfully deleted.'
+  end
+
 
   private
 
