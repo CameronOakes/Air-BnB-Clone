@@ -1,0 +1,16 @@
+<ul class="flats-list">
+    <% @flats.each do |flat| %>
+        <li class="flat-item">
+            <div class="flat-details">
+                <div class="flat-address"><%= flat.address %></div>
+                <div class="flat-price">Price: <%= flat.price %></div>
+                <div class="flat-capacity">Capacity: <%= flat.capacity %></div>
+            </div>
+            <div class="flat-actions">
+                <%= link_to 'View', flat_path(flat), class: "neomorphic-button" %>
+                <%= link_to 'Edit', edit_flat_path(flat), class: "neomorphic-button" %>
+                <%= link_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' }, class: "neomorphic-button" %>
+            </div>
+        </li>
+    <% end %>
+</ul>

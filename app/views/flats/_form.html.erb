@@ -1,0 +1,18 @@
+<%= simple_form_for @flat do |f| %>
+  <%= f.input :address, label: 'Address' %>
+  <%= f.input :price, label: 'Price' %>
+  <%= f.input :capacity, label: 'Capacity' %>
+
+  <%= f.button :submit, @flat.new_record? ? "Create Flat" : "Update Flat" %>
+<% end %>
+
+<% if @flat.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@flat.errors.count, "error") %> prohibited this flat from being saved:</h2>
+    <ul>
+    <% @flat.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>

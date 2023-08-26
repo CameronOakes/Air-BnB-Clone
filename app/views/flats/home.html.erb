@@ -1,16 +1,15 @@
 <section class="search-section centered-search-form">
-      <div class="search-container">
-        <header id="centered-header">
-          <h1>experience the world, one stay at a time</h1>
-        </header>
-        <form action="/search" method="get" id="search-form">
-          <div class="input-container">
-            <input class="neomorphic-input date-input datepicker" type="text" name="check_in" id="check-in-input" placeholder="Check-in">
-          <input class="neomorphic-input date-input datepicker" type="text" name="check_out" id="check-out-input" placeholder="Check-out">
-            <input class="neomorphic-input" type="text" id="location-input" placeholder="location">
-            <button class="neomorphic-button search-button" type="submit" id="search-button">search</button>
-          </div>
-        </form>
+  <div class="search-container">
+    <header id="centered-header">
+      <h1>experience the world, one stay at a time</h1>
+    </header>
+    <form action="<%= search_flats_path %>" method="get" id="search-form">
+      <div class="input-container">
+        <input class="neomorphic-input date-input datepicker" type="text" name="check_in" id="check-in-input" placeholder="Check-in">
+        <input class="neomorphic-input date-input datepicker" type="text" name="check_out" id="check-out-input" placeholder="Check-out">
+        <input class="neomorphic-input" type="text" name="location" id="location-input" placeholder="location">
+        <button class="neomorphic-button search-button" type="submit" id="search-button">search</button>
       </div>
-    </section>
-<%= link_to 'My Bookings', bookings_path %>
+    </form>
+  </div>
+</section>
