@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :bookings, only: [:index]
+
+  get 'search', to: 'flats#search', as: 'search_flats'
+
 end

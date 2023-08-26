@@ -47,6 +47,16 @@ class FlatsController < ApplicationController
     redirect_to flats_path, notice: 'Flat was successfully deleted.'
   end
 
+  def search
+    if params[:location].present?
+      @flats = Flat.where('address ILIKE ?', "%#{params[:location]}%")
+    else
+      @flats = Flat.all
+    end
+    render :index
+  end
+
+
 
   private
 
