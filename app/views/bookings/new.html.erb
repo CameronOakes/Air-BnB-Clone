@@ -6,4 +6,19 @@
   <%= f.button :submit, "Create Booking" %>
 <% end %>
 
-<%= flat_bookings_path(@flat) %>
+<% if @booking.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+    <ul>
+      <% @booking.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="alert alert-danger">
+    <%= flash[:alert] %>
+  </div>
+<% end %>

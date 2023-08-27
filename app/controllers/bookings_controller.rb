@@ -13,6 +13,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to bookings_path, notice: 'Booking was successfully created.'
     else
+      flash.now[:alert] = @booking.errors.full_messages.to_sentence
       render :new
     end
   end
@@ -20,6 +21,17 @@ class BookingsController < ApplicationController
   def index
     @bookings = Booking.where(user: current_user)
   end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    if @booking.user == current_user
+      @booking.destroy
+      redirect_to bookings_path, notice: 'Booking was successfully cancelled.'
+    else
+      redirect_to bookings_path, alert: 'You do not have permission to cancel this booking.'
+    end
+  end
+
 
   private
 
