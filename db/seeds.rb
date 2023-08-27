@@ -10,8 +10,8 @@ require 'faker'
 
 User.destroy_all
 
-user = User.create(name: Faker::Name.name, email: 'bob@gmail.com', number: '01543857221')
+user = User.create!(name: Faker::Name.name, email: 'bob@gmail.com', password: "123456")
 
 10.times do
-  Flat.create(address: Faker::Address.full_address, price: 75, rating: 6, capacity: 4, user: user)
+  Flat.create!(address: Faker::Address.full_address, price: 75, rating: 6, capacity: 4, user_id: user.id)
 end
