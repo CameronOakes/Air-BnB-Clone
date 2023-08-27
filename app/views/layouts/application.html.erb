@@ -9,6 +9,8 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= turbo_include_tags %>
+
 
   <script>
     $(function() {
@@ -60,7 +62,7 @@
   <nav class="navbar" id="navbar">
     <ul class="nav-list">
       <li><%= link_to 'home', root_path %></li>
-      <li><%= link_to 'bookings', root_path %></li>
+      <li><%= link_to 'bookings', bookings_path %></li>
       <li><%= link_to 'house', '#', class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
       <li><%= link_to 'flat', '#', class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
       <li><%= link_to 'sign up', new_user_registration_path, class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
