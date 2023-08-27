@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
   root "flats#home"
-  resources :flats
+  resources :flats, only: [:new, :create, :show] do
+    resources :bookings, only: [:new, :create]
+  end
+  resources :bookings, only: [:index]
 end

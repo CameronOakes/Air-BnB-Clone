@@ -9,55 +9,104 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .search-container {
   max-width: 600px;
   padding: 20px;
+  text-align: center;
 }
 
 #centered-header {
-  display: inline;
-  white-space: nowrap;
+  margin-bottom: 20px;
 }
 
 .input-container {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .neomorphic-input,
 .neomorphic-button,
 .date-input {
-  padding: 10px;
+  padding: 12px;
   border: none;
   border-radius: 10px;
   background-color: #f0f0f0;
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
-              -5px -5px 10px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 6px 6px 10px rgba(0, 0, 0, 0.2),
+              inset -6px -6px 10px rgba(255, 255, 255, 0.8);
   transition: transform 0.2s, box-shadow 0.2s;
   width: 100%;
-  margin-bottom: 10px;
   text-align: center;
 }
 
 .neomorphic-input:hover,
 .neomorphic-button:hover,
 .date-input:hover {
-  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3),
-              -6px -6px 12px rgba(255, 255, 255, 0.7);
+  box-shadow: inset 7px 7px 12px rgba(0, 0, 0, 0.3),
+              inset -7px -7px 12px rgba(255, 255, 255, 0.9);
 }
 
 .neomorphic-input:focus,
 .neomorphic-button:focus,
 .date-input:focus {
-  outline: none;
-  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2),
-              -3px -3px 6px rgba(255, 255, 255, 0.5);
+  box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2),
+              inset -4px -4px 8px rgba(255, 255, 255, 0.6);
 }
 
 #search-button {
   width: auto;
+  align-self: flex-end;
+}
+
+.flat-grid-section {
+  padding: 40px 0;
+  background-color: #f0f0f0;
+}
+
+.flat-grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.flat-card {
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #f0f0f0;
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2),
+              -6px -6px 10px rgba(255, 255, 255, 0.8);
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+.flat-card img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.flat-card h3 {
+  margin: 10px 0;
+}
+
+.flat-card p {
+  margin: 0;
+}
+
+.flat-card span {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Hover and focus effects */
+.flat-card:hover,
+.flat-card:focus {
+  box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.3),
+              -7px -7px 12px rgba(255, 255, 255, 0.9);
 }
