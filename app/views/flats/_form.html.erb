@@ -2,6 +2,7 @@
   <%= f.input :address, label: 'Address' %>
   <%= f.input :price, label: 'Price' %>
   <%= f.input :capacity, label: 'Capacity' %>
+  <%= f.input :photo, as: :file %>
 
   <%= f.button :submit, @flat.new_record? ? "Create Flat" : "Update Flat" %>
 <% end %>
