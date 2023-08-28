@@ -63,8 +63,7 @@
     <ul class="nav-list">
       <li><%= link_to 'home', root_path %></li>
       <li><%= link_to 'bookings', bookings_path %></li>
-      <li><%= link_to 'house', '#', class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
-      <li><%= link_to 'flat', '#', class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
+      <li><%= link_to 'flats', flats_path, class: ('active' if current_page?(flats_path)), class: 'neomorphic-button' %></li>
       <li><%= link_to 'sign up', new_user_registration_path, class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
       <li><%= link_to 'log in', new_user_session_path, class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
       <li><%= link_to 'sign out', destroy_user_session_path, data: { "turbo-method": :delete }, class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
