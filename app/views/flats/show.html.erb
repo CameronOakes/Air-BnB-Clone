@@ -1,5 +1,7 @@
 <h1><%= @flat.address %></h1>
 
+<%= cl_image_tag @flat.photo.key, width: 400, height: 300, crop: :fill if @flat.photo.key %>
+
 <%= simple_form_for [@flat, Booking.new], url: flat_bookings_path(@flat) do |f| %>
   <%= f.input :flat_id, as: :hidden, input_html: { value: @flat.id } %>
   <%= f.input :start_date, as: :date, label: 'Start Date' %>
