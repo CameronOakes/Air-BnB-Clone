@@ -1,71 +1,101 @@
+/* Reset default styles */
 body {
-  font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scrollbar */
 }
 
+/* Center the search form vertically */
 .centered-search-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
+  opacity: 1; /* Initial opacity value */
 }
 
+/* Styling for the search form container */
 .search-container {
   max-width: 600px;
   padding: 20px;
   text-align: center;
 }
 
-#centered-header {
-  margin-bottom: 20px;
-}
-
+/* Styling for the input container */
 .input-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
+/* Neomorphic styling for input, datepicker, search input, and search button */
 .neomorphic-input,
-.neomorphic-button,
-.date-input {
+.date-input,
+.search-input,
+.search-button {
   padding: 12px;
   border: none;
   border-radius: 10px;
-  background-color: #f0f0f0;
-  box-shadow: inset 6px 6px 10px rgba(0, 0, 0, 0.2),
-              inset -6px -6px 10px rgba(255, 255, 255, 0.8);
-  transition: transform 0.2s, box-shadow 0.2s;
+  background-color: #f5f5f5; /* Lighter background color */
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1),
+              -3px -3px 6px rgba(255, 255, 255, 0.8);
   width: 100%;
   text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: box-shadow 0.3s, background-color 0.3s; /* Add transition for smooth effect */
 }
 
+/* Smooth hover effect */
 .neomorphic-input:hover,
-.neomorphic-button:hover,
-.date-input:hover {
-  box-shadow: inset 7px 7px 12px rgba(0, 0, 0, 0.3),
-              inset -7px -7px 12px rgba(255, 255, 255, 0.9);
+.date-input:hover,
+.search-input:hover,
+.search-button:hover {
+  background-color: #f0f0f0; /* Original background color */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+              -5px -5px 10px rgba(255, 255, 255, 0.9);
 }
 
+/* Styling for input, datepicker, search input, and search button focus */
 .neomorphic-input:focus,
-.neomorphic-button:focus,
-.date-input:focus {
+.date-input:focus,
+.search-input:focus,
+.search-button:focus {
   box-shadow: inset 4px 4px 8px rgba(0, 0, 0, 0.2),
               inset -4px -4px 8px rgba(255, 255, 255, 0.6);
 }
 
-#search-button {
-  width: auto;
-  align-self: flex-end;
+/* Styling for primary and secondary buttons */
+.neomorphic-button.btn-primary {
+  background-color: #3498db;
+  color: white;
 }
 
+.neomorphic-button.btn-secondary {
+  background-color: #95a5a6;
+  color: white;
+}
+
+/* Hover and focus effects for buttons */
+.neomorphic-button:hover,
+.neomorphic-button:focus,
+.neomorphic-button.btn-primary:hover,
+.neomorphic-button.btn-secondary:hover {
+  box-shadow: inset 7px 7px 12px rgba(0, 0, 0, 0.3),
+              inset -7px -7px 12px rgba(255, 255, 255, 0.9);
+}
+
+/* Center the flat card grid horizontally */
 .flat-grid-section {
+  display: flex;
+  justify-content: center;
   padding: 40px 0;
-  background-color: #f0f0f0;
 }
 
+/* Styling for the container of flat cards */
 .flat-grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -74,39 +104,81 @@ body {
   margin: 0 auto;
 }
 
+/* Neomorphic styling for flat cards */
 .flat-card {
   padding: 20px;
   border-radius: 15px;
   background-color: #f0f0f0;
   box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2),
               -6px -6px 10px rgba(255, 255, 255, 0.8);
-  transition: transform 0.2s, box-shadow 0.2s;
   text-align: center;
+  transition: box-shadow 0.3s; /* Add transition for smooth effect */
 }
 
+/* Styling for flat card images */
 .flat-card img {
   max-width: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
+/* Super soft h3 styling */
 .flat-card h3 {
   margin: 10px 0;
+  font-size: 20px;
+  color: #333; /* Adjust the color as needed */
+  transition: color 0.3s; /* Add transition for smooth effect */
 }
 
+/* Styling for flat card paragraphs */
 .flat-card p {
   margin: 0;
 }
 
+/* Styling for flat card price */
 .flat-card span {
   display: block;
   font-weight: bold;
   margin-top: 10px;
 }
 
-/* Hover and focus effects */
+/* Hover and focus effects for flat cards */
 .flat-card:hover,
 .flat-card:focus {
   box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.3),
               -7px -7px 12px rgba(255, 255, 255, 0.9);
+}
+
+.flat-card:hover h3 {
+  color: #3498db; /* Adjust the color as needed */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .search-container {
+    max-width: 90%;
+  }
+}
+
+html {
+  scroll-snap-type: y mandatory;
+  scroll-snap-destination: 0% 10%; /* Adjust the destination value to control the snap position */
+  scroll-snap-points-y: repeat(10%);
+  scroll-padding-top: 70px; /* Adjust this value to match your navigation bar's height */
+  scroll-behavior: smooth; /* Add smooth scrolling behavior */
+}
+
+/* Style for each snap point (section) */
+.centered-search-form,
+.flat-grid-section {
+  scroll-snap-align: start;
+}
+
+/* Style for the snap point at the top of the page */
+body {
+  scroll-snap-align: none; /* Disable snap alignment for the top of the page */
+}
+
+#signup-button {
+  display: none; /* Hide the button visually */
 }

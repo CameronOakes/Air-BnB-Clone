@@ -10,24 +10,29 @@
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= turbo_include_tags %>
-
-
-  <script>
-    $(function() {
-      $(".datepicker").datepicker();
-    });
-  </script>
-
 </head>
 
-  <style>
-  .navbar {
+<style>
+  /* Reset default styles */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Prevent horizontal scrollbar */
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+  }
+
+  /* Navbar styling */
+  .navbar {
     background-color: #f0f0f0;
     border-radius: 16px;
     padding: 16px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.8);
+    width: 100%; /* Full width */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
   }
 
   .nav-list {
@@ -63,11 +68,13 @@
     <ul class="nav-list">
       <li><%= link_to 'home', root_path %></li>
       <li><%= link_to 'bookings', bookings_path %></li>
-      <li><%= link_to 'house', '#', class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
-      <li><%= link_to 'flat', '#', class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
-      <li><%= link_to 'sign up', new_user_registration_path, class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
-      <li><%= link_to 'log in', new_user_session_path, class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
-      <li><%= link_to 'sign out', destroy_user_session_path, data: { "turbo-method": :delete }, class: ('active' if current_page?('#')), class: 'neomorphic-button' %></li>
+      <li><%= link_to 'flat', '#' %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to 'sign out', destroy_user_session_path, data: { "turbo-method": :delete } %></li>
+      <% else %>
+        <li><%= link_to 'sign up', new_user_registration_path %></li>
+        <li><%= link_to 'log in', new_user_session_path %></li>
+      <% end %>
     </ul>
   </nav>
   <%= render "shared/flashes" %>
