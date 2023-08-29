@@ -1,17 +1,21 @@
-<ul class="flats-list">
-    <% @flats.each do |flat| %>
-        <li class="flat-item">
-            <div class="flat-details">
-                <div class="flat-address"><%= flat.address %></div>
-                <div class="flat-price">Price: <%= flat.price %></div>
-                <div class="flat-capacity">Capacity: <%= flat.capacity %></div>
-            </div>
-            <div class="flat-actions">
-                <%= link_to 'View', flat_path(flat), class: "neomorphic-button" %>
-                <%= link_to 'Edit', edit_flat_path(flat), class: "neomorphic-button" %>
-                <%= button_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' }, class: "neomorphic-button" %>
-
-            </div>
-        </li>
-    <% end %>
-</ul>
+<div class="container">
+    <div class="row">
+      <% @flats.each do |flat| %>
+        <div class="col-md-3">
+          <div class="flat-card">
+              <%= cl_image_tag flat.photo.key, class: "card-img-top" %>
+              <div class="card-body">
+                  <h5 class="card-title"><%= flat.address %></h5>
+                  <p class="card-text">Price: <%= flat.price %></p>
+                  <p class="card-text">Capacity: <%= flat.capacity %></p>
+              </div>
+              <div class="card-body">
+                  <%= link_to 'View', flat_path(flat), class: "card-link" %>
+                  <%= link_to 'Edit', edit_flat_path(flat), class: "neomorphic-button" %>
+                  <%= button_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' }, class: "neomorphic-button" %>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+</div>
