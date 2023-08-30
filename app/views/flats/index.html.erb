@@ -2,14 +2,14 @@
     <div class="row">
       <% @flats.each do |flat| %>
         <div class="col-md-3">
-          <div class="flat-card">
+          <div class="flat-card fixed-card mt-3">
               <%= cl_image_tag flat.photo.key, class: "card-img-top" %>
               <div class="card-body">
                   <h5 class="card-title"><%= flat.address %></h5>
                   <p class="card-text">Price: <%= flat.price %></p>
                   <p class="card-text">Capacity: <%= flat.capacity %></p>
               </div>
-              <div class="card-body">
+              <div class="container">
                   <%= link_to 'View', flat_path(flat), class: "card-link" %>
                   <%= link_to 'Edit', edit_flat_path(flat), class: "neomorphic-button" %>
                   <%= button_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' }, class: "neomorphic-button" %>
