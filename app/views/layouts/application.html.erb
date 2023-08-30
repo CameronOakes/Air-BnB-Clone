@@ -13,27 +13,35 @@
 </head>
 
 <style>
-  /* Reset default styles */
   body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    overflow-x: hidden; /* Prevent horizontal scrollbar */
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
+    align-items: center;
   }
 
-  /* Navbar styling */
   .navbar {
     background-color: #f0f0f0;
     border-radius: 16px;
     padding: 16px;
     box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.8);
-    width: 100%; /* Full width */
+    width: 100%;
     display: flex;
-    justify-content: center; /* Center content horizontally */
+    justify-content: center;
+    align-items: center;
   }
+
+ .avatar {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0;
+  align-self: left;
+  margin-right: 25px;
+}
+
 
   .nav-list {
     list-style: none;
@@ -65,6 +73,7 @@
 
 <body>
   <nav class="navbar" id="navbar">
+    <img src="<%= image_path('avatar.png') %>" alt="Avatar" class="avatar">
     <ul class="nav-list">
       <li><%= link_to 'home', root_path %></li>
       <li><%= link_to 'bookings', bookings_path %></li>

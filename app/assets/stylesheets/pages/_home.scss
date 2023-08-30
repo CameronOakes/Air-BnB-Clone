@@ -1,36 +1,47 @@
-/* Reset default styles */
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  overflow-x: hidden; /* Prevent horizontal scrollbar */
+  overflow-x: hidden;
+  background-color: #f5f7fa; /* Background color */
 }
 
-/* Center the search form vertically */
+.watermark-container {
+  position: fixed;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center the container */
+  width: 750px;
+  height: 750px;
+  background-image: url('/assets/avatar.png'); /* Use the correct asset path */
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.50; /* Adjust opacity as needed */
+  z-index: -1; /* Place the watermark behind other content */
+  transition: all 0.3s;
+}
+
 .centered-search-form {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  opacity: 1; /* Initial opacity value */
+  opacity: 1;
 }
 
-/* Styling for the search form container */
 .search-container {
   max-width: 600px;
   padding: 20px;
   text-align: center;
 }
 
-/* Styling for the input container */
 .input-container {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-/* Neomorphic styling for input, datepicker, search input, and search button */
 .neomorphic-input,
 .date-input,
 .search-input,
@@ -38,7 +49,7 @@ body {
   padding: 12px;
   border: none;
   border-radius: 10px;
-  background-color: #f5f5f5; /* Lighter background color */
+  background-color: #f2f4f8; /* Light grayish */
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1),
               -3px -3px 6px rgba(255, 255, 255, 0.8);
   width: 100%;
@@ -46,20 +57,18 @@ body {
   text-decoration: none;
   font-weight: bold;
   cursor: pointer;
-  transition: box-shadow 0.3s, background-color 0.3s; /* Add transition for smooth effect */
+  transition: box-shadow 0.3s, background-color 0.3s;
 }
 
-/* Smooth hover effect */
 .neomorphic-input:hover,
 .date-input:hover,
 .search-input:hover,
 .search-button:hover {
-  background-color: #f0f0f0; /* Original background color */
+  background-color: #e6ebee; /* Light blueish grey on hover */
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
               -5px -5px 10px rgba(255, 255, 255, 0.9);
 }
 
-/* Styling for input, datepicker, search input, and search button focus */
 .neomorphic-input:focus,
 .date-input:focus,
 .search-input:focus,
@@ -68,34 +77,45 @@ body {
               inset -4px -4px 8px rgba(255, 255, 255, 0.6);
 }
 
-/* Styling for primary and secondary buttons */
-.neomorphic-button.btn-primary {
-  background-color: #3498db;
+.neomorphic-button {
+  background-color: #2c3e50; /* Grayish color */
   color: white;
 }
 
-.neomorphic-button.btn-secondary {
-  background-color: #95a5a6;
-  color: white;
-}
-
-/* Hover and focus effects for buttons */
 .neomorphic-button:hover,
-.neomorphic-button:focus,
-.neomorphic-button.btn-primary:hover,
-.neomorphic-button.btn-secondary:hover {
+.neomorphic-button:focus {
+  background-color: #34495e; /* Darker gray on hover */
   box-shadow: inset 7px 7px 12px rgba(0, 0, 0, 0.3),
               inset -7px -7px 12px rgba(255, 255, 255, 0.9);
 }
 
-/* Center the flat card grid horizontally */
+.search-button {
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background-color: #f2f4f8; /* Light grayish */
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.1),
+              -3px -3px 6px rgba(255, 255, 255, 0.8);
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #d6e1e8; /* Light blueish grey background on hover */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2),
+              -5px -5px 10px rgba(255, 255, 255, 0.9);
+}
+
 .flat-grid-section {
   display: flex;
   justify-content: center;
   padding: 40px 0;
 }
 
-/* Styling for the container of flat cards */
 .flat-grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -104,77 +124,65 @@ body {
   margin: 0 auto;
 }
 
-/* Neomorphic styling for flat cards */
 .flat-card {
   padding: 20px;
   border-radius: 15px;
-  background-color: #f0f0f0;
+  background-color: #f5f7fa; /* Background color */
   box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2),
               -6px -6px 10px rgba(255, 255, 255, 0.8);
   text-align: center;
-  transition: box-shadow 0.3s; /* Add transition for smooth effect */
+  transition: box-shadow 0.3s;
 }
 
-/* Styling for flat card images */
 .flat-card img {
   max-width: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
-/* Super soft h3 styling */
 .flat-card h3 {
   margin: 10px 0;
   font-size: 20px;
-  color: #333; /* Adjust the color as needed */
-  transition: color 0.3s; /* Add transition for smooth effect */
+  color: #444;
+  transition: color 0.3s;
 }
 
-/* Styling for flat card paragraphs */
 .flat-card p {
   margin: 0;
 }
 
-/* Styling for flat card price */
 .flat-card span {
   display: block;
   font-weight: bold;
   margin-top: 10px;
 }
 
-/* Hover and focus effects for flat cards */
 .flat-card:hover,
 .flat-card:focus {
+  background-color: #e6ebee; /* Light blueish grey background on hover */
   box-shadow: 7px 7px 12px rgba(0, 0, 0, 0.3),
               -7px -7px 12px rgba(255, 255, 255, 0.9);
 }
 
-.flat-card:hover h3 {
-  color: #3498db; /* Adjust the color as needed */
-}
-
-/* Media query for smaller screens */
 @media (max-width: 768px) {
   .search-container {
-    max-width: 90%;
+      max-width: 90%;
   }
 }
 
 html {
   scroll-snap-type: y mandatory;
-  scroll-snap-destination: 0% 10%; /* Adjust the destination value to control the snap position */
+  scroll-snap-destination: 0% 10%;
   scroll-snap-points-y: repeat(10%);
-  scroll-padding-top: 70px; /* Adjust this value to match your navigation bar's height */
-  scroll-behavior: smooth; /* Add smooth scrolling behavior */
+  scroll-padding-top: 70px;
+  scroll-behavior: smooth;
 }
 
-/* Style for each snap point (section) */
 .centered-search-form,
 .flat-grid-section {
   scroll-snap-align: start;
 }
 
-/* Style for the snap point at the top of the page */
 body {
-  scroll-snap-align: none; /* Disable snap alignment for the top of the page */
+  scroll-snap-align: none;
 }
