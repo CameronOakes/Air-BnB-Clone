@@ -3,7 +3,7 @@
       <% @flats.each do |flat| %>
         <div class="col-md-3">
           <div class="flat-card fixed-card mt-3">
-              <%= cl_image_tag flat.photo.key, class: "card-img-top" %>
+              <%= cl_image_tag flat.photo.key, :cloud_name => "dll73yhjm", class: "card-img-top" %>
               <div class="card-body">
                   <h5 class="card-title"><%= flat.address %></h5>
                   <p class="card-text">Price: <%= flat.price %></p>
