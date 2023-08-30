@@ -1,10 +1,22 @@
-<h1><%= @flat.address %></h1>
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-12 col-md-8">
+      <%= cl_image_tag @flat.photo.key, width: 400, height: 300, crop: :fill, class: "rounded" if @flat.photo.key %>
+      <h2><%= @flat.address %></h2>
+      <p><%= @flat.description %></p>
+    </div>
+    <div class="col-6 col-md-4  mt-3">
+      <div class="form-group">
+        <%= simple_form_for [@flat, Booking.new], url: flat_bookings_path(@flat) do |f| %>
+          <%= f.input :flat_id, as: :hidden, input_html: { value: @flat.id } %>
+          <%= f.input :start_date, as: :date, label: 'Start Date' %>
+          <%= f.input :end_date, as: :date, label: 'End Date' %>
+          <p><i class="fa-solid fa-sterling-sign"></i> <%= @flat.price %></p>
+          <p><i class="fa-sharp fa-solid fa-user"></i> <%= @flat.capacity %></p>
+          <%= f.button :submit, "Book Now", class: "btn btn-primary" %>
+        <% end %>
 
-<%= cl_image_tag @flat.photo.key, width: 400, height: 300, crop: :fill if @flat.photo.key %>
-
-<%= simple_form_for [@flat, Booking.new], url: flat_bookings_path(@flat) do |f| %>
-  <%= f.input :flat_id, as: :hidden, input_html: { value: @flat.id } %>
-  <%= f.input :start_date, as: :date, label: 'Start Date' %>
-  <%= f.input :end_date, as: :date, label: 'End Date' %>
-  <%= f.button :submit, "Book Now" %>
-<% end %>
+      </div>
+    </div>
+  </div>
+</div>
