@@ -27,7 +27,6 @@ class FlatsController < ApplicationController
     @flats = Flat.order(:id)
   end
 
-
   def edit
     @flat = Flat.find(params[:id])
   end
@@ -55,8 +54,6 @@ class FlatsController < ApplicationController
     end
     render :index
   end
-
-
 
   private
 
