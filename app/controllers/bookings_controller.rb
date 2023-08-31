@@ -28,7 +28,7 @@ class BookingsController < ApplicationController
       @booking.destroy
       redirect_to bookings_path, notice: 'Booking was successfully cancelled.'
     else
-      redirect_to bookings_path, alert: 'You do not have permission to cancel this booking.'
+      redirect_to bookings_path, alert: 'You can not to cancel this booking.'
     end
   end
 
