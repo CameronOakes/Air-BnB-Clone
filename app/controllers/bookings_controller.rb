@@ -19,7 +19,12 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = Booking.where(user: current_user)
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @bookings = Booking.where(user: @user)
+    else
+      @bookings = Booking.where(user: current_user)
+    end
   end
 
   def destroy
@@ -31,7 +36,6 @@ class BookingsController < ApplicationController
       redirect_to bookings_path, alert: 'You do not have permission to cancel this booking.'
     end
   end
-
 
   private
 

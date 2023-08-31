@@ -1,0 +1,10 @@
+<%= simple_form_for @user, html: { multipart: true } do |f| %>
+
+  <%= f.input :name, label: "Name", required: true, autofocus: true %>
+  <%= f.input :email, label: "Email", required: true %>
+  <%= f.input :contact, label: "Contact" %>
+  <%= f.input :bio, label: "Bio", as: :text %>
+  <%= f.input :profile_picture, label: "Profile Picture", as: :file %>
+  <%= f.button :submit, 'Update' %>
+
+<% end %>
