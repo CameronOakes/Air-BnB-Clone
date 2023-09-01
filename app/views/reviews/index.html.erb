@@ -1,0 +1,13 @@
+<h1>Reviews</h1>
+
+<% @reviews.each do |review| %>
+  <div class="review">
+    <p><strong>Rating:</strong> <%= review.rating.present? ? "#{review.rating} out of 5" : "No rating provided" %></p>
+
+
+    <p><%= review.content %></p>
+  </div>
+<% end %>
+
+
+<%= debug(review) %>

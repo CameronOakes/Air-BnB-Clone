@@ -7,4 +7,9 @@ class Flat < ApplicationRecord
   validates :address, presence: true
   validates :price, numericality: { greater_than: 0 }
   validates :capacity, numericality: { only_integer: true, greater_than: 0 }
+
+  def average_rating
+    reviews.average(:rating) || 0
+  end
+
 end
