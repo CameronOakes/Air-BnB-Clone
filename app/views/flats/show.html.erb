@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col-12 col-md-8">
-      <%= cl_image_tag @flat.photo.key, width: 400, height: 300, crop: :fill, class: "rounded" if @flat.photo.key %>
+      <%= cl_image_tag @flat.photo.key, :cloud_name => "dll73yhjm", width: 400, height: 300, crop: :fill, class: "rounded" if @flat.photo.key %>
       <h2><%= @flat.address %></h2>
       <p><%= @flat.description %></p>
 
