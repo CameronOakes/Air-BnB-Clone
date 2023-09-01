@@ -1,9 +1,14 @@
 class Booking < ApplicationRecord
   belongs_to :flat
   belongs_to :user
+  has_one :review
 
   validates :start_date, :end_date, presence: true
   validate :no_date_overlap
+
+  def completed?
+    end_date < Date.today
+  end
 
   def no_date_overlap
     overlapping_bookings = Booking.where(flat_id: flat_id)
@@ -16,4 +21,5 @@ class Booking < ApplicationRecord
       Rails.logger.debug "Overlapping Bookings Detected: #{overlapping_bookings.to_a}"
     end
   end
+
 end

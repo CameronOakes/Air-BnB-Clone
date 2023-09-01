@@ -1,0 +1,54 @@
+<div class="user-info">
+  <%= image_tag @user.profile_picture.variant(resize: "150x150") if @user.profile_picture.attached? %>
+  <div class="user-details">
+    <h2><%= @user.name %></h2>
+    <p>Email: <%= @user.email %></p>
+    <p>Contact: <%= @user.contact %></p>
+    <p>Bio: <%= @user.bio %></p>
+  </div>
+</div>
+
+<%= link_to 'Edit Profile', edit_user_path(@user) %>
+
+
+<h2>Booking History</h2>
+<div class="upcoming-bookings">
+  <h3>Upcoming Bookings</h3>
+  <% @bookings.each do |booking| %>
+    <% if booking.date >= Date.today %>
+      <%= render 'bookings/booking_card', booking: booking %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="past-bookings">
+  <h3>Past Bookings</h3>
+  <% @bookings.each do |booking| %>
+    <% if booking.date < Date.today %>
+      <%= render 'bookings/booking_card', booking: booking %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "My Bookings", user_bookings_path(current_user) %>
+
+<h3>Your Reviews</h3>
+<% @user.reviews.each do |review| %>
+  <div class="review">
+    <strong><%= review.flat.name %>:</strong>
+    Rating: <%= review.rating %><br/>
+    Comment: <%= review.comment %>
+  </div>
+<% end %>
+
+<h3>Reviews for Your Flats</h3>
+<% @user.flats.each do |flat| %>
+  <% flat.reviews.each do |review| %>
+    <div class="review">
+      <strong><%= flat.name %>:</strong>
+      From: <%= review.user.name %><br/>
+      Rating: <%= review.rating %><br/>
+      Comment: <%= review.comment %>
+    </div>
+  <% end %>
+<% end %>
