@@ -22,6 +22,7 @@ class ReviewsController < ApplicationController
     @review = @flat.reviews.build
   end
 
+
   def create
     @review = @flat.reviews.build(review_params)
     @review.booking = @booking
@@ -30,16 +31,21 @@ class ReviewsController < ApplicationController
       return
     end
     if @review.save
-      redirect_to flat_path(@flat), notice: "Review created successfully."
+      redirect_to flat_path(@review.flat), notice: 'Review was successfully created.'
+
     else
       render :new
     end
   end
 
+  def show
+    @review = Review.find(params[:id])
+  end
+
   private
 
   def review_params
-    params.require(:review).permit(:content)
+    params.require(:review).permit(:content, :rating)
   end
 
   def set_booking_and_flat

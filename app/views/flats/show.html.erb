@@ -1,4 +1,9 @@
 <h1><%= @flat.address %></h1>
+<% if @flat.reviews.any? %>
+  <p>Average Rating: <%= @flat.average_rating.round(2) %> out of 5</p>
+<% else %>
+  <p>No reviews yet.</p>
+<% end %>
 
 <%= cl_image_tag @flat.photo.key, width: 400, height: 300, crop: :fill if @flat.photo.key %>
 
@@ -12,13 +17,13 @@
 
 <h2>Reviews for <%= @flat.address %>:</h2>
 
-<ul>
-  <% @reviews.each do |review| %>
-    <li>
-      <%= review.content %>
-    </li>
-  <% end %>
-</ul>
+
+<% @reviews.each do |review| %>
+  <div class="review">
+    <p><strong>Rating:</strong> <%= review.rating || "No rating provided" %> out of 5</p>
+    <p><%= review.content %></p>
+  </div>
+<% end %>
 
 
 <% if current_user && @flat.bookings.where(user: current_user).exists? %>
