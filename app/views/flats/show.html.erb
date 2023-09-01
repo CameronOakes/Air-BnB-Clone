@@ -2,7 +2,7 @@
   <div class="row mt-4">
     <div class="col-12 col-md-8">
       <%= cl_image_tag @flat.photo.key, width: 400, height: 300, crop: :fill, class: "rounded" if @flat.photo.key %>
-      <h1><%= @flat.address %></h1>
+      <h2><%= @flat.address %></h2>
       <p><%= @flat.description %></p>
 
       <% if @flat.reviews.any? %>
