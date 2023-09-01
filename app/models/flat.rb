@@ -9,6 +9,7 @@ class Flat < ApplicationRecord
   validates :capacity, numericality: { only_integer: true, greater_than: 0 }
 
   def average_rating
-    reviews.average(:rating)
+    reviews.average(:rating) || 0
   end
+
 end
