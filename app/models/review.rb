@@ -1,4 +1,5 @@
 class Review < ApplicationRecord
   belongs_to :booking
-  belongs_to :flat, through: :bookings
+  has_one :flat, through: :booking
+
 end

@@ -9,7 +9,6 @@ class BookingsController < ApplicationController
   def create
     @booking = @flat.bookings.new(booking_params)
     @booking.user = current_user
-
     if @booking.save
       redirect_to bookings_path, notice: 'Booking was successfully created.'
     else
@@ -19,7 +18,12 @@ class BookingsController < ApplicationController
   end
 
   def index
-    @bookings = Booking.where(user: current_user)
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @bookings = Booking.where(user: @user)
+    else
+      @bookings = Booking.where(user: current_user)
+    end
   end
 
   def destroy
@@ -28,10 +32,9 @@ class BookingsController < ApplicationController
       @booking.destroy
       redirect_to bookings_path, notice: 'Booking was successfully cancelled.'
     else
-      redirect_to bookings_path, alert: 'You can not to cancel this booking.'
+      redirect_to bookings_path, alert: 'You do not have permission to cancel this booking.'
     end
   end
-
 
   private
 

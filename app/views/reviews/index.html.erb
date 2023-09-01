@@ -1,0 +1,10 @@
+<h1>Reviews</h1>
+
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <strong>Booking ID:</strong> <%= review.booking_id %><br>
+      <strong>Review:</strong> <%= review.content %>
+    </li>
+  <% end %>
+</ul>

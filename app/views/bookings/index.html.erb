@@ -13,3 +13,10 @@
 <% else %>
   <p>You have no bookings.</p>
 <% end %>
+
+
+<% @bookings.each do |booking| %>
+  <% if booking.completed? && booking.review.nil? %>
+    <%= link_to "Leave a Review", new_flat_booking_review_path(booking.flat, booking) %>
+  <% end %>
+<% end %>

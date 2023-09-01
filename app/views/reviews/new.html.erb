@@ -1,0 +1,13 @@
+<%= simple_form_for [@flat, @booking, @review] do |f| %>
+  <div>
+    <%= f.input :content, label: "Your Review:", as: :text %>
+  </div>
+  <div>
+    <%= f.button :submit, "Submit Review" %>
+  </div>
+<% end %>
+
+
+
+
+<%= link_to "Leave a Review", new_flat_booking_review_path(@flat, @booking) %>

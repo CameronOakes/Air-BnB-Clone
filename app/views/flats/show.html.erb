@@ -8,3 +8,22 @@
   <%= f.input :end_date, as: :date, label: 'End Date' %>
   <%= f.button :submit, "Book Now" %>
 <% end %>
+
+
+<h2>Reviews for <%= @flat.address %>:</h2>
+
+<ul>
+  <% @reviews.each do |review| %>
+    <li>
+      <%= review.content %>
+    </li>
+  <% end %>
+</ul>
+
+
+<% if current_user && @flat.bookings.where(user: current_user).exists? %>
+  <% booking = @flat.bookings.where(user: current_user).last %>
+  <% unless booking.review %>
+    <%= link_to "Leave a Review", new_flat_booking_review_path(@flat, booking) %>
+  <% end %>
+<% end %>
