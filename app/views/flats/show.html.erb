@@ -4,7 +4,7 @@
 
 <%= simple_form_for [@flat, Booking.new], url: flat_bookings_path(@flat) do |f| %>
   <%= f.input :flat_id, as: :hidden, input_html: { value: @flat.id } %>
-  <%= f.input :start_date, as: :date, label: 'Start Date' %>
-  <%= f.input :end_date, as: :date, label: 'End Date' %>
-  <%= f.button :submit, "Book Now" %>
+  <%= f.input :start_date, as: :date, label: 'start date' %>
+  <%= f.input :end_date, as: :date, label: 'end date' %>
+  <%= f.button :submit, "book now" %>
 <% end %>

@@ -1,6 +1,6 @@
 <div class="centered-search-form">
   <div class="search-container">
-    <h2>Sign up</h2>
+    <h2>sign up</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name),
       data: {turbo: false}) do |f| %>
@@ -10,7 +10,7 @@
         <%= f.input :name,
                     required: true,
                     autofocus: true,
-                    input_html: { autocomplete: "email", class: 'neomorphic-input' } %>
+                    input_html: { autocomplete: "email", class: 'neomorphic-input' }%>
         <%= f.input :email,
                     required: true,
                     autofocus: true,
@@ -24,7 +24,7 @@
       </div>
 
       <div class="form-actions">
-        <%= f.button :button, "Sign up", class: "neomorphic-button btn btn-primary", id: "signup-button" %>
+        <%= f.button :button, "sign up", class: "neomorphic-button search-button", id: "signup-button" %>
       </div>
     <% end %>
 

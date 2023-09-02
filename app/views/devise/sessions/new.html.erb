@@ -1,24 +1,36 @@
 <div class="centered-search-form">
   <div class="search-container">
-    <h2>Log in</h2>
+    <h2>log in</h2>
 
     <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
       <div class="input-container">
         <%= f.input :email,
-                    required: false,
-                    autofocus: true,
-                    input_html: { autocomplete: "email", class: 'neomorphic-input' } %>
-        <%= f.input :password,
-                    required: false,
-                    input_html: { autocomplete: "current-password", class: 'neomorphic-input' } %>
-        <%= f.input :remember_me, as: :boolean, class: 'neomorphic-input' if devise_mapping.rememberable? %>
+            required: false,
+            autofocus: true,
+            input_html: { autocomplete: "email", class: 'neomorphic-input' },
+            label_html: { class: 'neomorphic-input-label' } %>
+          <%= f.input :password,
+            required: false,
+            input_html: { autocomplete: "current-password", class: 'neomorphic-input' },
+            label_html: { class: 'neomorphic-input-label' } %>
       </div>
 
       <div class="form-actions">
-        <%= f.button :submit, "Log in", class: "neomorphic-button btn btn-primary" %>
+        <%= f.button :submit, "log in", class: "neomorphic-button search-button", id: "login-button" %>
+      </div>
+
+      <div class="center-checkbox">
+        <%= f.input :remember_me, as: :boolean, label: "remember me", wrapper_html: { class: 'neomorphic-checkbox' } if devise_mapping.rememberable? %>
       </div>
     <% end %>
 
-    <%= render "devise/shared/links" %>
+    <div class="custom-links">
+      <div>
+        <%= link_to "sign up", new_user_registration_path, class: "custom-link" %>
+      </div>
+      <div>
+        <%= link_to "forgot your password?", new_user_password_path, class: "custom-link" %>
+      </div>
+    </div>
   </div>
 </div>
