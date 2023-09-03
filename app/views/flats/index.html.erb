@@ -1,21 +1,29 @@
 <div class="container">
     <div class="row">
       <% @flats.each do |flat| %>
-        <div class="col-md-3">
-          <div class="flat-card fixed-card mt-3">
-              <%= cl_image_tag flat.photo.key, :cloud_name => "dll73yhjm", class: "card-img-top" %>
-              <div class="card-body">
-                  <h5 class="card-title"><%= flat.address %></h5>
-                  <p class="card-text">Price: <%= flat.price %></p>
-                  <p class="card-text">Capacity: <%= flat.capacity %></p>
-              </div>
-              <div class="container">
-                  <%= link_to 'View', flat_path(flat), class: "card-link" %>
-                  <%= link_to 'Edit', edit_flat_path(flat), class: "neomorphic-button" %>
-                  <%= button_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' }, class: "neomorphic-button" %>
-              </div>
+          <div class="col-md-3">
+            <div class="card flat-card fixed-card mt-3">
+                <%= cl_image_tag flat.photo.key, :cloud_name => "dll73yhjm", class: "card-img-top" %>
+                <div class="card-body">
+                    <h5 class="card-title"><%= flat.address %></h5>
+                    <div class="my-3">
+                      <p class="card-text"><i class="fa-solid fa-sterling-sign"></i> <%= flat.price %></p>
+                      <p class="card-text"><i class="fa-sharp fa-solid fa-user"></i> <%= flat.capacity %></p>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                      <%= link_to 'View', flat_path(flat), class: "btn btn-primary" %>
+                      <% current_user.flats.each do |user_flat| %>
+                        <% if user_flat == flat %>
+                          <div class="btn-group" role="group">
+                            <%= link_to 'Edit', edit_flat_path(flat), class: "btn btn-secondary" %>
+                            <%= button_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    </div>
+                </div>
+            </div>
           </div>
-        </div>
       <% end %>
     </div>
 </div>
