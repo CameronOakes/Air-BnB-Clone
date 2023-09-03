@@ -12,12 +12,14 @@
                     </div>
                     <div class="card-footer bg-transparent">
                       <%= link_to 'View', flat_path(flat), class: "btn btn-primary" %>
-                      <% current_user.flats.each do |user_flat| %>
-                        <% if user_flat == flat %>
-                          <div class="btn-group" role="group">
-                            <%= link_to 'Edit', edit_flat_path(flat), class: "btn btn-secondary" %>
-                            <%= button_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %>
-                          </div>
+                      <% if user_signed_in? %>
+                        <% current_user.flats.each do |user_flat| %>
+                          <% if user_flat == flat %>
+                            <div class="btn-group" role="group">
+                              <%= link_to 'Edit', edit_flat_path(flat), class: "btn btn-secondary" %>
+                              <%= button_to 'Delete', flat_path(flat), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %>
+                            </div>
+                          <% end %>
                         <% end %>
                       <% end %>
                     </div>
