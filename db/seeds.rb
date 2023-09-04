@@ -11,11 +11,17 @@ require 'open-uri'
 
 User.destroy_all
 
+image_arr = ["https://res.cloudinary.com/dll73yhjm/image/upload/v1693849915/ManorhouseCN1_407975232_742007361_vpvbqt.jpg",
+             "https://res.cloudinary.com/dll73yhjm/image/upload/v1693849914/luxury-art-deco-apartment-interior_ztds9i.jpg",
+             "https://res.cloudinary.com/dll73yhjm/image/upload/v1693849914/scarpa-16_14791_compressed_31FCD1C449F3178CE482BACDE88E7BA5_huqkoc.jpg",
+             "https://res.cloudinary.com/dll73yhjm/image/upload/v1693849914/63208132_wgu9kb.jpg",
+             "https://res.cloudinary.com/dll73yhjm/image/upload/v1693338351/74qpmn058u2v4svfua5t66gvf3bj.jpg"]
+
 user = User.create!(name: Faker::Name.name, email: 'bob@gmail.com', password: "123456")
 
 10.times do
-  flat = Flat.new(address: Faker::Address.full_address, price: 75, rating: 6, capacity: 4, description: Faker::Lorem.paragraph, user_id: user.id)
-  file = URI.open("https://res.cloudinary.com/dll73yhjm/image/upload/v1693338351/74qpmn058u2v4svfua5t66gvf3bj.jpg")
+  flat = Flat.new(address: "#{Faker::Address.city}, UK", price: rand(30..150), rating: rand(1..5), capacity: rand(2..10), description: Faker::Lorem.paragraph, user_id: user.id)
+  file = URI.open(image_arr.sample)
   flat.photo.attach(io: file, filename: "something.jpg", content_type: "image/jpg")
   flat.save
 end
