@@ -11,7 +11,7 @@ require 'open-uri'
 
 User.destroy_all
 
-image_arr = ["https://res.cloudinary.com/dll73yhjm/image/upload/v1693849915/ManorhouseCN1_407975232_742007361_vpvbqt.jpg",
+image_arr = ["https://asset.cloudinary.com/dll73yhjm/2807cf635bbb02766d6410d503189f5c",
              "https://res.cloudinary.com/dll73yhjm/image/upload/v1693849914/luxury-art-deco-apartment-interior_ztds9i.jpg",
              "https://res.cloudinary.com/dll73yhjm/image/upload/v1693849914/scarpa-16_14791_compressed_31FCD1C449F3178CE482BACDE88E7BA5_huqkoc.jpg",
              "https://res.cloudinary.com/dll73yhjm/image/upload/v1693849914/63208132_wgu9kb.jpg",
