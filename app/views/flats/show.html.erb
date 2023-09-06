@@ -6,37 +6,45 @@
       <p><%= @flat.description %></p>
 
       <% if @flat.reviews.any? %>
-        <p>Average Rating: <%= @flat.average_rating.round(2) %> out of 5</p>
+        <p><i class="fa-solid fa-star fa-lg"></i> <strong><%= @flat.average_rating.round(2) %></strong></p>
       <% else %>
         <p>No reviews yet.</p>
       <% end %>
 
-      <h2>Reviews for <%= @flat.address %>:</h2>
-      <% @reviews.each do |review| %>
-        <div class="review">
-          <p><strong>Rating:</strong> <%= review.rating || "No rating provided" %> out of 5</p>
-          <p><%= review.content %></p>
-        </div>
-      <% end %>
+      <div class="mt-5">
+        <h2>Reviews for <%= @flat.address %>:</h2>
 
-      <% if current_user && @flat.bookings.where(user: current_user).exists? %>
-        <% booking = @flat.bookings.where(user: current_user).last %>
-        <% unless booking.review %>
-          <%= link_to "Leave a Review", new_flat_booking_review_path(@flat, booking) %>
+        <% @reviews.each do |review| %>
+          <div class="col-4 col-md-5 border-top">
+            <p class ="mt-3"><strong>Rating:</strong> <%= review.rating || "No rating provided" %> out of 5</p>
+            <p>"<%= review.content %>"</p>
+          </div>
         <% end %>
-      <% end %>
+      </div>
+
+      <div class="mt-3">
+        <% if current_user && @flat.bookings.where(user: current_user).exists? %>
+          <% booking = @flat.bookings.where(user: current_user).last %>
+          <% unless booking.review %>
+            <%= link_to "Leave a Review", new_flat_booking_review_path(@flat, booking) %>
+          <% end %>
+        <% end %>
+      </div>
 
     </div>
-    <div class="col-6 col-md-4  mt-3">
+    <div class="col-6 col-md-4 mt-3">
       <div class="form-group">
-        <%= simple_form_for [@flat, Booking.new], url: flat_bookings_path(@flat) do |f| %>
-          <%= f.input :flat_id, as: :hidden, input_html: { value: @flat.id } %>
-          <%= f.input :start_date, as: :date, label: 'Start Date' %>
-          <%= f.input :end_date, as: :date, label: 'End Date' %>
-          <p><i class="fa-solid fa-sterling-sign"></i> <%= @flat.price %></p>
-          <p><i class="fa-sharp fa-solid fa-user"></i> <%= @flat.capacity %></p>
-          <%= f.button :submit, "Book Now", class: "btn btn-primary" %>
-        <% end %>
+        <div class="">
+          <%= simple_form_for [@flat, Booking.new], url: flat_bookings_path(@flat) do |f| %>
+            <h4>Book your next stay</h4>
+            <%= f.input :flat_id, as: :hidden, input_html: { value: @flat.id } %>
+            <%= f.input :start_date, as: :date, label: 'Start Date' %>
+            <%= f.input :end_date, as: :date, label: 'End Date' %>
+            <p><i class="fa-solid fa-sterling-sign"></i> <%= @flat.price %></p>
+            <p><i class="fa-sharp fa-solid fa-user"></i> <%= @flat.capacity %></p>
+            <%= f.button :submit, "Book Now", class: "btn btn-primary" %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>

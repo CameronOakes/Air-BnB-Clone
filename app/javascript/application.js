@@ -2,6 +2,8 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
 
+
+
 document.addEventListener("DOMContentLoaded", function() {
   const searchInput = document.getElementById("location-input");
 
@@ -32,3 +34,5 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+console.log("Hello world")
