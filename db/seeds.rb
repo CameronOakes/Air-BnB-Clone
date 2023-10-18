@@ -19,7 +19,7 @@ image_arr = ["https://res.cloudinary.com/dll73yhjm/image/upload/v1693853433/4vkr
 
 user = User.create!(name: Faker::Name.name, email: 'bob@gmail.com', password: "123456")
 
-10.times do
+30.times do
   flat = Flat.new(address: "#{Faker::Address.city}, UK", price: rand(30..150), rating: rand(1..5), capacity: rand(2..10), description: Faker::Lorem.paragraph, user_id: user.id)
   file = URI.open(image_arr.sample)
   flat.photo.attach(io: file, filename: "something.jpg", content_type: "image/jpg")
